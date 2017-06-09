@@ -1,0 +1,7 @@
+- name: Playbook for setting hardening parameters for Ansible 
+  hosts: all
+  tasks: 
+  - name: configure password length requirement 
+    template: 
+      src: pwquality.conf.j2
+      dest: /etc/security/pwquality.conf

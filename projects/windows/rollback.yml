@@ -1,0 +1,9 @@
+- name: test windows 
+  hosts: windows
+  ignore_errors: yes 
+  tasks:
+  - name: configure environment variable 
+    win_environment:
+      state: absent
+      name: JAVA_HOME
+      level: machine

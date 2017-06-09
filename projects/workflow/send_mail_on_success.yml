@@ -1,0 +1,20 @@
+- name: test windows 
+  hosts: windows
+  ignore_errors: yes 
+  tasks:
+  - name: 'Install JDK'
+    win_package:
+      path: 'c:/jdk-8u131-windows-i586.exe'
+      product_id: '{0240359E-6A4C-4884-9E94-B397A02D893C}'
+      arguments: '/s'      
+  - name: 'JDK Installation'
+    win_msi:
+      path: 'c:/jdk-8u131-windows-i586.exe'
+      extra_args: '/s'
+      ensure: present
+  - name: configure environment variable 
+    win_environment:
+      state: present
+      name: JAVA_HOME
+      value: 'c:\Program Files(x86)\Java\jdk1.8.0_131' 
+      level: machine
