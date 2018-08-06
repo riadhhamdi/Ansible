@@ -3,3 +3,6 @@
   - name: just show a message 
     debug:
        msg: "Hello world"
+   - name: just show a variable 
+    debug:
+       var: myvar
