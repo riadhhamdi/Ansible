@@ -1,0 +1,5 @@
+---
+# vars file for PyApi
+infra_services:
+  - mariadb
+  - httpd 

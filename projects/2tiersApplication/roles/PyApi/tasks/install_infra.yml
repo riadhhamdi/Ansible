@@ -1,0 +1,16 @@
+- name: Install servers [mariadb + Httpd ]
+  yum:
+    name: "{{item}}"
+    state: installed 
+  with_items:
+    - mariadb-server
+    - httpd 
+    - mod_wsgi 
+    - libsemanage-python
+- name: Ensure services started 
+  service:
+    name: "{{item}}"
+    state: started 
+  with_items: 
+    - mariadb
+    - httpd 

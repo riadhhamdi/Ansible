@@ -1,0 +1,70 @@
+#!/usr/bin/python3
+from flask import Flask, request, jsonify
+from flask_restful import Resource, Api
+from sqlalchemy import create_engine
+from json import dumps
+import mysql.connector as mariadb
+import json 
+app = Flask(__name__)
+api = Api(app)
+mariadb_connection = mariadb.connect(user='{{mysql_con_user}}', password='{{mysql_con_password}}', database='employees')
+cursor = mariadb_connection.cursor()
+
+class Employees(Resource):
+    def get(self):
+        ##Execute the SQL command 
+        cursor.execute("SELECT * FROM employees")
+        results = cursor.fetchall()
+        size = len(results)
+        print(size)
+        retour = {}
+        for i in results:
+          record_info = {}
+          record_info["LastName"] = i[1]
+          record_info["FirstName"] = i[2]
+          record_info["Email"]=i[3]
+          print(record_info)
+          retour[`i[0]`] = record_info 
+        return retour
+    
+    def post(self):
+        print(request)
+        print(request.data)
+        bodydata = json.loads(request.data)
+        LastName = bodydata['LastName']
+        FirstName = bodydata['FirstName']
+        Email = bodydata['Email']
+        cursor.execute("insert into employees values(null,%s,%s,%s)", (LastName,FirstName,Email))
+        mariadb_connection.commit()
+        return {'status':'success'}
+
+    
+
+    
+class Employees_Name(Resource):
+    def get(self, employee_id):
+      cursor.execute("select * from employees where id =%d "  %int(employee_id))
+      results = cursor.fetchall()
+      size = len(results)
+      print(size)
+      retour = {}
+      for i in results:
+        record_info = {}
+        record_info["LastName"] = i[1]
+        record_info["FirstName"] = i[2]
+        record_info["Email"]=i[3]
+        print(record_info)
+        retour[`i[0]`] = record_info
+      return retour
+    def delete(self, employee_id):
+      cursor.execute("delete from employees where id =%d "  %int(employee_id))
+      mariadb_connection.commit()
+      return {'status':'success'}
+
+api.add_resource(Employees, '/api/employees') # Route_1
+api.add_resource(Employees_Name, '/api/employees/<employee_id>') # Route_3
+
+
+if __name__ == '__main__':
+     #app.run()
+     app.run(host= '0.0.0.0')

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  <title>Demo Application</title>
+
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,300,400italic,700,900' rel='stylesheet' type='text/css'>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="DEMO Appllication">
+  
+  <
+
+  <!-- Bootstrap css -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/bootstrap.techie.css" rel="stylesheet">
+
+  <!-- =======================================================
+    Theme Name: Techie
+    Theme URL: https://bootstrapmade.com/techie-free-skin-bootstrap-3/
+    Author: BootstrapMade
+    Author URL: https://bootstrapmade.com
+  ======================================================= -->
+
+  <!-- Docs Custom styles -->
+  <style>
+    body,
+    html {
+      overflow-x: hidden
+    }
+
+    body {
+      padding: 60px 20px 0
+    }
+
+    footer {
+      border-top: 1px solid #ddd;
+      padding: 30px;
+      margin-top: 50px
+    }
+
+    .row>[class*=col-] {
+      margin-bottom: 40px
+    }
+
+    .navbar-container {
+      position: relative;
+      min-height: 100px
+    }
+
+    .navbar.navbar-fixed-bottom,
+    .navbar.navbar-fixed-top {
+      position: absolute;
+      top: 50px;
+      z-index: 0
+    }
+
+    .navbar.navbar-fixed-bottom .container,
+    .navbar.navbar-fixed-top .container {
+      max-width: 90%
+    }
+
+    .btn-group {
+      margin-bottom: 10px
+    }
+
+    .form-inline input[type=password],
+    .form-inline input[type=text],
+    .form-inline select {
+      width: 180px
+    }
+
+    .input-group {
+      margin-bottom: 10px
+    }
+
+    .pagination {
+      margin-top: 0
+    }
+
+    .navbar-inverse {
+      margin: 110px 0
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="jumbotron">
+      <h1>Demo Application</h1>
+      <p>Custom Demo for LDC by <a href="http://bootstraptaste.com">STARTX</a></p>
+      
+    </div>
+
+
+
+    <!-- Tables -->
+   <center>
+    <div class="row">
+      <div class="col-sm-12 col-lg-12">
+<h2> Yeah I know it's an ugly output... </h2>
+<h3>
+<?php
+$url = 'http://{{backend_uri}}/api/employees';
+$response = file_get_contents($url);
+echo $response;
+?>
+</h3>
+
+
+  <footer class="text-center">
+    <p>&copy; Employees Application</p>
+    <div class="credits">
+      <!--
+        All the links in the footer should remain intact.
+        You can delete the links only if you purchased the pro version.
+        Licensing information: https://bootstrapmade.com/license/
+        Purchase the pro version form: https://bootstrapmade.com/buy/?theme=Techie
+      -->
+      Designed by <a href="https://bootstrapmade.com/">Riadh Hamdi</a>
+    </div>
+  </footer>
+
+  <!-- Main Scripts-->
+  <script src="assets/js/jquery.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+
+  <!-- Bootstrap 3 has typeahead optionally -->
+  <script src="assets/js/typeahead.min.js"></script>
+
+</body>
+
+</html>

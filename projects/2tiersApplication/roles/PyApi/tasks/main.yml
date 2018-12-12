@@ -1,0 +1,48 @@
+- name: Install epel release 
+  yum:
+    name: 
+      - epel-release 
+      - firewalld
+    state: present
+- name: install all Infra the tools required   
+  include: install_infra.yml 
+- name: Install Flask libraries 
+  include: install_flask.yml 
+- name: Install connectors
+  include: mysql_connectors.yml
+- name: Configure Database   
+  include: configure_database.yml 
+- name: Push the Code As Python module 
+  include: push_code.yml 
+- name: start required services 
+  service: 
+    name: "{{item}}"
+    state: started 
+  with_items: "{{infra_services}}" 
+ 
+- name: Ensure service firewalld is enabled
+  service:
+     name: firewalld
+     state: started 
+        
+- name: Open required ports on firewall 
+  firewalld:
+    service: http
+    state: enabled 
+    immediate: yes 
+    permanent: true 
+- name: configure Selinux 
+  seboolean:
+    name: mysql_connect_any
+    state: yes
+    persistent: yes
+- name: Ensure Selinux in permissive mode 
+  selinux:
+    policy: targeted
+    state: permissive
+
+- name: Ensure Httpd restarted 
+  service: 
+    name: httpd  
+    state: restarted
+    enabled: true 

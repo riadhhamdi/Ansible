@@ -1,0 +1,7 @@
+---
+# defaults file for PyApi
+server_name: pythonapi.lab.com
+server_alias: pythonapi
+mysql_con_user: admindb 
+mysql_con_password: redhat 
+

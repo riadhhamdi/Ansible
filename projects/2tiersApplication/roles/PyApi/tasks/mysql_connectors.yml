@@ -1,0 +1,7 @@
+- name: Install mysql connectors 
+  yum: 
+    name: 
+      - MySQL-python
+      - mysql-connector-python
+      - python2-PyMySQL
+

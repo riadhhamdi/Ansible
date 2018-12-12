@@ -1,0 +1,17 @@
+- name: Create the python modume FlaskApp 
+  file:
+    dest: /var/www/html/FlaskApp/
+    state: directory
+- name: Push WSGI interface 
+  copy:
+    src: flaskapp.wsgi
+    dest: /var/www/html/
+- name: Create the python Application files 
+  template:
+    src: '__init__.py.j2'
+    dest: /var/www/html/FlaskApp/__init__.py
+- name: Configure VirtualHost  
+  template:
+    src: python_api.conf.j2 
+    dest: /etc/httpd/conf.d/python_api.conf
+  notify: restart httpd 

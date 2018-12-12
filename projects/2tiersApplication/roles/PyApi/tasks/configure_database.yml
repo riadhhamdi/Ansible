@@ -1,0 +1,33 @@
+- name: Ensure Database is Started 
+  service:
+    name: mariadb
+    state: started 
+    enabled: true
+- name: Create Database User 
+  mysql_user:
+    name: "{{mysql_con_user}}"
+    password: "{{mysql_con_password}}"
+    priv: '*.*:ALL,GRANT'
+    state: present
+#- name: Create Database User 
+#  mysql_user:
+#    name: "'admindb'@'%'"
+#    password: "{{mysql_con_password}}"
+#    priv: '*.*:ALL,GRANT'
+#    state: present
+- name: Copy mysql Dump 
+  copy: 
+    src: dump.sql 
+    dest: /tmp/dump.sql 
+- name: Restore the database 
+  mysql_db:
+    state: import
+    name: all
+    target: /tmp/dump.sql
+- name: Cleanup the remote files 
+  file: 
+    path: /tmp/dump.sql
+    state: absent 
+  
+  
+   

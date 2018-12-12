@@ -1,0 +1,28 @@
+- hosts: "{{backend}}"
+  roles: 
+  - role: PyApi
+  tasks:
+  - name: Pass the hostname to the frontend 
+    add_host:
+      hostname: "{{frontend}}"
+      backend_uri: "{{ansible_fqdn}}"
+- hosts: "{{frontend}}"
+  tasks:
+  - name: install httpd and php
+    yum:
+      name: 
+        - httpd 
+        - php
+  - name: Copy files to remote website 
+    copy:
+      src: html/
+      dest: /var/www/html/
+  - name: push index file 
+    template: 
+      src: index.php.j2
+      dest: /var/www/html/index.php 
+  - name: Start service 
+    service: 
+      name: httpd 
+      state: started 
+

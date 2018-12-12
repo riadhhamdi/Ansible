@@ -1,0 +1,31 @@
+<VirtualHost *:80>
+
+    ServerName {{server_name}}
+    ServerAlias {{server_alias}} 
+    ServerAdmin webmaster@example.com
+
+    DocumentRoot /var/www/html
+
+    <Directory /var/www/html>
+    <IfVersion < 2.4>
+        Order allow,deny
+        Allow from all
+    </IfVersion>
+    <IfVersion >= 2.4>
+        Require all granted
+    </IfVersion>
+    </Directory>
+
+    WSGIScriptAlias / /var/www/html/flaskapp.wsgi 
+
+#    <Directory /usr/local/www/wsgi-scripts>
+#    <IfVersion < 2.4>
+#        Order allow,deny
+#        Allow from all
+#    </IfVersion>
+#    <IfVersion >= 2.4>
+#        Require all granted
+#    </IfVersion>
+#    </Directory>
+
+</VirtualHost>
