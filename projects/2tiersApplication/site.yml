@@ -1,6 +1,6 @@
 - hosts: "{{backend}}"
-  roles: 
-  - role: PyApi
+#  roles: 
+#  - role: PyApi
   tasks:
   - name: Pass the hostname to the frontend 
     add_host:
