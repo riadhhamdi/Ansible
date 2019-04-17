@@ -11,7 +11,7 @@
   - name: Start required Services 
     service: 
       name: "{{ item }}" 
-      state: running
+      state: started
       enabled: true
     with_items:
       - firewalld 
