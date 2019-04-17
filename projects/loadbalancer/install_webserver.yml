@@ -21,9 +21,7 @@
       permanent: true  
       service: http
       state: enabled 
-- name: Configure web content 
-  hosts: backends
-  tasks: 
+ 
   - name: deploy web content per server
     copy: 
       src: "webcontent/amazon.lab.com/{{item}}"
