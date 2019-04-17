@@ -1,5 +1,5 @@
 - name: Configure Web servers 
-  hosts: backends 
+  hosts: all 
   tasks: 
   - name: Install httpd server
     yum: 
