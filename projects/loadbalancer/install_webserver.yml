@@ -21,6 +21,7 @@
       permanent: true  
       service: http
       state: enabled 
+      immediate: yes 
  
   - name: deploy web content per server
     copy: 
