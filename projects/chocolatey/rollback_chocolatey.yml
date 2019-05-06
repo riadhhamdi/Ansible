@@ -1,0 +1,18 @@
+- hosts: all 
+  tasks: 
+  
+#  - name: Install Chocolatey Client 
+#    win_shell: "Set-ExecutionPolicy Bypass -Scope Process -Force; iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex"
+#
+  - name: Disable EnhancedExit codes Chocolatey 
+    win_shell: choco feature disable --name="'useEnhancedExitCodes'"
+  - name: Install google Chrome with chocolatey
+    win_chocolatey: 
+      name: GoogleChrome
+      state: absent 
+      force: yes 
+  - name: Install JRE on windows 
+    win_chocolatey: 
+      name: jre8
+      state: absent 
+      force: yes 
