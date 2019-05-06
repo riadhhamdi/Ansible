@@ -6,11 +6,13 @@
 #
   - name: Disable EnhancedExit codes Chocolatey 
     win_shell: choco feature disable --name="'useEnhancedExitCodes'"
-  - name: Install notepad with chocolatey
+  - name: Install google Chrome with chocolatey
     win_chocolatey: 
       name: GoogleChrome
       state: present 
       force: yes 
-      source: 'https://chocolatey.org/api/v2'
-      validate_certs: false 
-  
+  - name: Install JRE on windows 
+    win_chocolatey: 
+      name: jre8
+      state: present 
+      force: yes 
