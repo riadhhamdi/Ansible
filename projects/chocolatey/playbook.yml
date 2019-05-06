@@ -1,0 +1,16 @@
+- hosts: all 
+  tasks: 
+  
+#  - name: Install Chocolatey Client 
+#    win_shell: "Set-ExecutionPolicy Bypass -Scope Process -Force; iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex"
+#
+  - name: Disable EnhancedExit codes Chocolatey 
+    win_shell: choco feature disable --name="'useEnhancedExitCodes'"
+  - name: Install notepad with chocolatey
+    win_chocolatey: 
+      name: GoogleChrome
+      state: present 
+      force: yes 
+      source: 'https://chocolatey.org/api/v2'
+      validate_certs: false 
+  
