@@ -1,0 +1,57 @@
+- name: Configure Web servers 
+  hosts: backends 
+  tasks: 
+  - name: Install httpd server
+    yum: 
+      name: httpd 
+      state: latest
+  - name: Start required Services 
+    service: 
+      name: "{{ item }}" 
+      state: running
+      enabled: true
+    with_items:
+      - firewalld 
+      - httpd
+  - name: Configure firewalld 
+    firewalld:
+      permanent: true  
+      service: http
+      state: enabled 
+- name: Configure web content 
+  hosts: backends
+  tasks: 
+  - name: deploy web content per server
+    copy: 
+      src: "webcontent/{{ content }}/{{item}}"
+      dest: /var/www/html
+    with_items: 
+      - index.html
+      - index_fichiers
+- name: Configure the loadbalancer  
+  hosts: lb*
+  tasks: 
+  - name: Show variables
+    debug:
+      msg: "{{ item }}"
+    with_items: "{{ groups['backends'] }}" 
+  - name: Install Haproxy server
+    yum:
+      name: haproxy
+      state: latest
+  - name: Start Haproxy Service
+    service:
+      name: haproxy
+      state: started
+      enabled: true
+  - name: Create the haproxy file 
+    template:
+      dest: /etc/haproxy/haproxy.cfg
+      src: haproxy.cfg.j2
+    notify: restart_lb
+  handlers:
+  - name: restart_lb
+    service: 
+      name: haproxy
+      state: restarted
+     

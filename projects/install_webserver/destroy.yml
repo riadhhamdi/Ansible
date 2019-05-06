@@ -1,0 +1,29 @@
+- name: Configure Web servers 
+  hosts: backends 
+  tasks: 
+  - name: Stop all the Services 
+    service: 
+      name: "{{ item }}" 
+      state: running
+    with_items:
+      - httpd
+  - name: Destroy httpd server
+    yum: 
+      name: httpd 
+      state: absent
+- name: Configure web content 
+  hosts: backends
+  tasks: 
+- name: Configure the loadbalancer  
+  hosts: lb*
+  tasks:
+   
+  - name: Stop Haproxy Service
+    service:
+      name: haproxy
+      state: stopped
+  - name: Install Haproxy server
+    yum:
+      name: haproxy
+      state: absent
+     
