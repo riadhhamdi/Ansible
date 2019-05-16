@@ -1,0 +1,206 @@
+@import url(//fonts.googleapis.com/css?family=Parisienne);
+
+/* default style */
+
+.navbar-default .navbar-nav > li > a {
+  color: #de6f90;
+  font-size: 15px;
+  font-family: 'georgia';
+  text-transform:uppercase;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  color: #481a30;
+  font-size: 15px;
+}
+.navbar-default .navbar-nav > li > a.current {
+  color: #481a30;
+  font-size: 15px;
+}
+
+h1 {
+  font-family: 'Parisienne', cursive;
+  font-size: 72px;
+  color: #de6f90;
+}
+h2 {
+  font-family: 'Parisienne', cursive;
+  font-size: 30px;
+  color: #de6f90;
+}
+h3 {
+  font-family: 'georgia';
+  font-size: 22px;
+  color: #de6f90;
+  text-transform: uppercase;
+}
+h4 {
+  font-family: 'Parisienne', cursive;
+  font-size: 30px;
+  color: #481a30;
+}
+p{
+  font-size: 15px;
+
+}
+p,
+a {
+  color: #de6f90;
+  font-family: 'georgia';
+}
+i.fa:not([style*=":"]) {
+  color: #de6f90;
+  font-size: 25px;
+  text-shadow: none;
+  box-sizing: content-box;
+  line-height: 45px;
+  text-align: center;
+  width: 45px;
+  height: 45px;
+  display: inline-block;
+}
+
+.btn:not([bs-btn]){
+  color: #FFFFFF;
+  background-color: #de6f90;
+  border-color: #d66687;
+}
+.btn:hover:not([bs-btn]),
+.btn:focus:not([bs-btn]),
+.btn:active:not([bs-btn]),
+.btn.active:not([bs-btn]),
+.open .dropdown-toggle.btn {
+  color: #FFFFFF;
+ background-color: #de6f90;
+ border-color: #d66687;
+ border-radius: 0px;
+}
+.btn:active,
+.btn.active,
+.open .dropdown-toggle.btn {
+  background-image: none;
+}
+.btn.disabled,
+.btn[disabled],
+fieldset[disabled] .btn,
+.btn.disabled:hover,
+.btn[disabled]:hover,
+fieldset[disabled] .btn:hover,
+.btn.disabled:focus,
+.btn[disabled]:focus,
+fieldset[disabled] .btn:focus,
+.btn.disabled:active,
+.btn[disabled]:active,
+fieldset[disabled] .btn:active,
+.btn.disabled.active,
+.btn[disabled].active,
+fieldset[disabled] .btn.active {
+   background-color: #de6f90;
+  border-color: #d66687;
+}
+.btn .badge {
+  color: #de6f90;
+  background-color: #FFFFFF;
+}
+
+/* carousel style */
+
+.carousel h1 {
+  font-family: 'Parisienne', cursive;
+  font-size: 72px;
+  color: #481a30;
+}
+.carousel p{
+  font-size: 22px;
+
+}
+.carousel p,
+.carousel a {
+  color: #481a30;
+  text-transform: uppercase;
+  font-family:'georgia';
+}
+
+/* main style */
+
+.main {
+  background-color: #e5d8dd;
+}
+.main h1 {
+  font-family: 'Parisienne', cursive;
+  font-size: 72px;
+  color: #481a30;
+}
+.main h2 {
+  font-family: 'Parisienne', cursive;
+  font-size: 30px;
+  color: #481a30;
+}
+.main h3 {
+  font-family:'georgia';
+  font-size: 22px;
+  text-transform: uppercase;
+  color: #481a30;
+}
+.main h4 {
+  font-family: 'Parisienne', cursive;
+  font-size: 30px;
+  color: #de6f90;
+}
+.main p{
+  font-size: 15px;
+
+}
+.main p,
+.main a {
+  color: #481a30;
+  font-family:'georgia';
+}
+
+/* negative style */
+
+.negative {
+  background-color: #481a30;
+}
+.negative h1 {
+  font-family: 'Parisienne', cursive;
+  font-size: 72px;
+  color: #fff;
+}
+.negative h2 {
+  font-family: 'Parisienne', cursive;
+  font-size: 30px;
+  color: #fff;
+}
+.negative h3 {
+  font-family: 'georgia';
+  font-size: 30px;
+  text-transform: uppercase;
+  color: #fff;
+}
+.negative h4 {
+  font-family: 'Parisienne', cursive;
+  font-size: 30px;
+  color: #de6f90;
+}
+.negative p{
+  font-size: 15px;
+
+}
+.negative p,
+.negative a {
+  color: #fff;
+  font-family: 'georgia';
+}
+.negative i.fa:not([style*=":"]) {
+  color: #de6f90;
+  font-size: 25px;
+  text-shadow: none;
+  box-sizing: content-box;
+  line-height: 45px;
+  text-align: center;
+  width: 45px;
+  height: 45px;
+  display: inline-block;
+}
+
+
