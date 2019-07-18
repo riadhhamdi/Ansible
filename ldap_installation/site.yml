@@ -1,0 +1,64 @@
+- hosts: localhost 
+  vars:
+    ldap_pkgs: 
+      - openldap
+      - compat-openldap
+      - openldap-clients
+      - openldap-servers
+      - openldap-servers-sql
+      - openldap-devel
+    domain: domain.local
+    directory_manager: admin
+    directory_password: redhat
+  tasks: 
+  - name: Install required packages for LDAP
+    yum:
+      name: "{{ldap_pkgs}}"
+  - name: Start services for LDAP
+    service: 
+      name: slapd 
+      state: started 
+      enabled: yes 
+  - name: Generate hash for LDAP password 
+    shell: "slappasswd -h {SSHA} -s {{directory_password}}"
+    register: password_hash 
+  - name: Show the password hash 
+    debug:
+      var: password_hash  
+  - name: change and update template file 
+    template: 
+      src: db.ldif.j2 
+      dest:  db.ldif 
+  - name: change and update template file for db and monitor 
+    template: 
+      src: monitor.ldif.j2 
+      dest:  monitor.ldif 
+   
+  - name: Configure database
+    shell: "ldapmodify -Y EXTERNAL  -H ldapi:/// -f db.ldif ; ldapmodify -Y EXTERNAL  -H ldapi:/// -f monitor.ldif" 
+  - name: Copy database configuration 
+    copy:
+      remote_src: yes 
+      src: /usr/share/openldap-servers/DB_CONFIG.example
+      dest: /var/lib/ldap/DB_CONFIG
+  - name: Import LDAP schemas 
+    shell: "ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/{{item}} "
+    loop:
+      - cosine.ldif 
+      - nis.ldif 
+      - inetorgperson.ldif
+  - name: craete base domain structure files 
+    template: 
+      src: "{{item}}.j2"
+      dest: "{{item}}"
+    loop:
+      - base_structure.ldif
+      - user-u1.ldif 
+      - group-g1.ldif 
+  - name: add and create base domain structure 
+    shell: "ldapadd -x -w {{directory_password}} -D 'cn=ldapadm,dc=itzgeek,dc=local' -f {{item}}" 
+    loop:
+      - base_structure.ldif
+      - user-u1.ldif 
+      - group-g1.ldif 
+    

@@ -1,0 +1,14 @@
+dn: olcDatabase={2}hdb,cn=config
+changetype: modify
+replace: olcSuffix
+olcSuffix: dc={{domain.split('.')[0] | lower}},dc={{domain.split('.')[1] | lower}}
+
+dn: olcDatabase={2}hdb,cn=config
+changetype: modify
+replace: olcRootDN
+olcRootDN: cn={{directory_manager}},dc={{domain.split('.')[0] | lower}},dc={{domain.split('.')[1] | lower}}
+
+dn: olcDatabase={2}hdb,cn=config
+changetype: modify
+replace: olcRootPW
+olcRootPW: {SSHA}KjJ5TL3A8h1BPkyGq4ewP8lkFBxQKskp

@@ -1,0 +1,17 @@
+dn: dc={{domain.split('.')[0] | lower}},dc={{domain.split('.')[1] | lower}}
+dc: {{domain.split('.')[0] | lower}}
+objectClass: top
+objectClass: domain
+
+dn: cn={{directory_manager}} ,dc={{domain.split('.')[0] | lower}},dc={{domain.split('.')[1] | lower}}
+objectClass: organizationalRole
+cn: ldapadm
+description: LDAP Manager
+
+dn: ou=People,dc={{domain.split('.')[0] | lower}},dc={{domain.split('.')[1] | lower}}
+objectClass: organizationalUnit
+ou: People
+
+dn: ou=Group,dc={{domain.split('.')[0] | lower}},dc={{domain.split('.')[1] | lower}}
+objectClass: organizationalUnit
+ou: Group

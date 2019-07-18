@@ -1,0 +1,10 @@
+- hosts: localhost 
+  vars:
+    domain: startx.fr
+    directory_manager: admin 
+  tasks:
+  - debug: 
+      msg: "{{ domain.split('.')[0] | lower }}"
+  - template:
+      src: monitor.ldif.j2
+      dest: /tmp/monitor.ldif 

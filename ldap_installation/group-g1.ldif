@@ -1,0 +1,5 @@
+dn: cn=Admins,ou=Group,dc={{domain.split('.')[0] | lower}},dc={{{{domain.split('.')[1] | lower}}
+objectclass: groupofnames
+cn: Admins 
+ou: group
+member: cn=Riadh Hamdi,ou=People,dc=itzgeek,dc=local
