@@ -11,4 +11,4 @@ olcRootDN: cn={{directory_manager}},dc={{domain.split('.')[0] | lower}},dc={{dom
 dn: olcDatabase={2}hdb,cn=config
 changetype: modify
 replace: olcRootPW
-olcRootPW: {SSHA}KjJ5TL3A8h1BPkyGq4ewP8lkFBxQKskp
+olcRootPW: {{password_hash.stdout}} 

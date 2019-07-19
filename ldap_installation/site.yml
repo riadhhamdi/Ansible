@@ -28,36 +28,38 @@
   - name: change and update template file 
     template: 
       src: db.ldif.j2 
-      dest:  db.ldif 
+      dest: /tmp/db.ldif 
   - name: change and update template file for db and monitor 
     template: 
       src: monitor.ldif.j2 
-      dest:  monitor.ldif 
+      dest: /tmp/monitor.ldif 
    
   - name: Configure database
-    shell: "ldapmodify -Y EXTERNAL  -H ldapi:/// -f db.ldif ; ldapmodify -Y EXTERNAL  -H ldapi:/// -f monitor.ldif" 
+    shell: "ldapmodify -Y EXTERNAL  -H ldapi:/// -f /tmp/db.ldif ; ldapmodify -Y EXTERNAL  -H ldapi:/// -f /tmp/monitor.ldif" 
   - name: Copy database configuration 
     copy:
       remote_src: yes 
       src: /usr/share/openldap-servers/DB_CONFIG.example
       dest: /var/lib/ldap/DB_CONFIG
   - name: Import LDAP schemas 
-    shell: "ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/{{item}} "
-    loop:
-      - cosine.ldif 
-      - nis.ldif 
-      - inetorgperson.ldif
+    shell: "ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/{{item}}"
+    with_items:
+     - cosine.ldif 
+     - nis.ldif 
+     - inetorgperson.ldif
+    ignore_errors: yes 
+
   - name: craete base domain structure files 
     template: 
       src: "{{item}}.j2"
-      dest: "{{item}}"
-    loop:
-      - base_structure.ldif
-      - user-u1.ldif 
-      - group-g1.ldif 
+      dest: "/tmp/{{item}}"
+    with_items:
+     - base_structure.ldif
+     - user-u1.ldif 
+     - group-g1.ldif 
   - name: add and create base domain structure 
-    shell: "ldapadd -x -w {{directory_password}} -D 'cn=ldapadm,dc=itzgeek,dc=local' -f {{item}}" 
-    loop:
+    shell: "ldapadd -x -w {{directory_password}} -D 'cn={{directory_manager}},dc=domain,dc=local' -f /tmp/{{item}}" 
+    with_items:
       - base_structure.ldif
       - user-u1.ldif 
       - group-g1.ldif 
