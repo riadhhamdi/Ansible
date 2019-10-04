@@ -1,0 +1,257 @@
+@import url(//fonts.googleapis.com/css?family=Questrial:100,200,300,400,500,600,700,800,900,100italic,200italic,300italic,400italic,500italic,600italic,700italic,800italic,900italic);
+@import url(//fonts.googleapis.com/css?family=Oxygen:100,200,300,400,500,600,700,800,900,100italic,200italic,300italic,400italic,500italic,600italic,700italic,800italic,900italic);
+@import url(//fonts.googleapis.com/css?family=Hind:100,200,300,400,500,600,700,800,900,100italic,200italic,300italic,400italic,500italic,600italic,700italic,800italic,900italic);
+
+.main  {
+	background-color : #CEB69F;
+}
+.main h1 {
+	font-family : 'Questrial';
+	font-size : 54px;
+}
+.main h2 {
+	font-family : 'Questrial';
+	font-weight : normal;
+	font-size : 30px;
+	color : #ffffff;
+}
+.main h3 {
+	font-family : 'Oxygen';
+	font-size : 23px;
+	color : #ffffff;
+}
+.main h4 {
+	font-family : 'Questrial';
+	color : #ffffff;
+}
+.main .btn:not([bs-btn]) {
+	font-family : 'Questrial';
+	background-color : #413D4B;
+}
+.main p {
+	font-family : 'Hind';
+	font-size : 13px;
+	color : #413D4B;
+}
+.main a {
+	font-family : 'Hind';
+	font-size : 13px;
+	color : #413D4B;
+}
+.main i.fa:not([style*=":"]) {
+	background-color : #CEB69F;
+	color : #413D4B;
+	font-size : 25px;
+	height : 45px;
+	width : 45px;
+	line-height : 45px;
+}
+.negative  {
+	background-color : #F2F2F2;
+}
+.negative a {
+	font-family : 'Hind';
+	font-size : 13px;
+	color : #413D4B;
+}
+.negative h2 {
+	font-size : 30px;
+	color : #413D4B;
+}
+.negative h3 {
+	font-size : 23px;
+}
+.negative h4 {
+	font-size : 20px;
+	color : #413D4B;
+}
+.negative p {
+	font-size : 13px;
+	color : #413D4B;
+}
+.negative .btn:not([bs-btn]) {
+	background-color : #CEB69F;
+	color : #ffffff;
+	font-family : 'Questrial';
+}
+.negative i.fa:not([style*=":"]) {
+	background-color : #F2F2F2;
+	color : #413D4B;
+	font-size : 18px;
+	height : 40px;
+	width : 40px;
+	line-height : 40px;
+}
+.secondary  {
+	background-color : #413D4B;
+}
+.secondary h1 {
+	font-family : 'Questrial';
+	font-size : 80px;
+	color : #fff;
+}
+.secondary h2 {
+	font-family : 'Questrial';
+	font-size : 30px;
+	text-transform : none;
+	color : #ffffff;
+}
+.secondary h3 {
+	font-family : 'Hind';
+	font-size : 23px;
+	color : #FFFFFF;
+}
+.secondary h4 {
+	font-family : 'Questrial';
+	font-size : 24px;
+	color : #ffffff;
+}
+.secondary p {
+	font-family : 'Hind';
+	font-size : 13px;
+	color : #8F8B99;
+}
+.secondary a {
+	font-family : 'Hind';
+	font-size : 13px;
+}
+.secondary .btn:not([bs-btn]) {
+	background-color : #CEB69F;
+	color : #ffffff;
+	font-family : 'Questrial';
+}
+.secondary i.fa:not([style*=":"]) {
+	background-color : #ffffff;
+	color : #413D4B;
+	font-size : 13px;
+	height : 34px;
+	width : 34px;
+	line-height : 34px;
+}
+h1 {
+	font-family : 'Questrial';
+	font-size : 54px;
+	color : #413D4B;
+	font-width: bold;
+
+}
+h2 {
+	font-family : 'Questrial';
+	font-size : 30px;
+	color : #413D4B;
+	font-width: bold;
+
+}
+h3 {
+	font-family : 'Hind';
+	font-size : 23px;
+	color : #8f8b99;
+	font-weight: normal;
+
+}
+h4 {
+	font-family : 'Questrial';
+	font-size : 20px;
+	line-height : 29px;
+	color : #413D4B;
+	font-weight: bold;
+
+}
+p {
+	font-family : 'Hind';
+	font-size : 13px;
+	color : #413D4B;
+}
+a {
+	font-family : 'Hind';
+	font-size : 13px;
+	color : #413D4B;
+	text-decoration : underline;
+	font-style : italic;
+}
+.btn:not([bs-btn]) {
+	background-color : #CEB69F;
+	color : #ffffff;
+	font-family : 'Questrial';
+}
+i.fa:not([style*=":"]) {
+	background-color : #CEB69F;
+	color : #ffffff;
+	height : 45px;
+	width : 45px;
+	line-height : 45px;
+	font-size : 25px;
+}
+.basic h1 {
+	font-family : 'Questrial';
+	font-size : 54px;
+	color : #413D4B;
+}
+.basic h2 {
+	font-family : 'Questrial';
+	font-size : 30px;
+	color : #413D4B;
+}
+.basic h3 {
+	font-family : 'Hind';
+	font-size : 23px;
+	color : #8f8b99;
+}
+.basic h4 {
+	font-family : 'Questrial';
+	font-size : 20px;
+	line-height : 29px;
+	color : #413D4B;
+}
+.basic p {
+	font-family : 'Hind';
+	font-size : 13px;
+	color : #413D4B;
+}
+.basic a {
+	font-family : 'Hind';
+	font-size : 13px;
+	color : #413D4B;
+	text-decoration : underline;
+	font-style : italic;
+}
+.basic .btn:not([bs-btn]) {
+	background-color : #CEB69F;
+	color : #ffffff;
+	font-family : 'Questrial';
+}
+.basic i.fa:not([style*=":"]) {
+	background-color : #CEB69F;
+	color : #ffffff;
+	height : 45px;
+	width : 45px;
+	line-height : 45px;
+	font-size : 25px;
+}
+.main-color {
+	color: #CEB69F;
+}
+.main-border-color {
+	border-color: #CEB69F;
+}
+.main-background {
+	background-color: #CEB69F;
+}
+.negative-color {
+	color: #F2F2F2;
+}
+.negative-border-color {
+	border-color: #F2F2F2;
+}
+.negative-background {
+	background-color: #F2F2F2;
+}
+.secondary-color {
+	color: #413D4B;
+}
+.secondary-border-color {
+	border-color: #413D4B;
+}
+.secondary-background {
+	background-color: #413D4B;
+}

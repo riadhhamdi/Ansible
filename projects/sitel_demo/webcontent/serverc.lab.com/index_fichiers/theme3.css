@@ -1,0 +1,242 @@
+@import url(//fonts.googleapis.com/css?family=Oxygen:100,200,300,400,500,600,700,800,900,100italic,200italic,300italic,400italic,500italic,600italic,700italic,800italic,900italic);
+@import url(//fonts.googleapis.com/css?family=Source+Sans+Pro:100,200,300,400,500,600,700,800,900,100italic,200italic,300italic,400italic,500italic,600italic,700italic,800italic,900italic);
+.main  {
+	background-color : #5FC1B4;
+}
+.main h1 {
+	font-family : 'Oxygen';
+	color : #ffffff;
+	font-weight: bold;
+}
+.main h2 {
+	font-family : 'Oxygen';
+	color : #ffffff;
+}
+.main h3 {
+	font-family : 'Oxygen';
+	color : #ffffff;
+}
+.main h4 {
+	font-family : 'Oxygen';
+	color : #ffffff;
+}
+.main p {
+	font-family : 'Source Sans Pro';
+	font-size : 17px;
+	color : #ffffff;
+}
+.main a {
+	font-family : 'Source Sans Pro';
+	font-size : 17px;
+	color : #ffffff;
+	text-decoration : underline;
+}
+.main i.fa:not([style*=":"]) {
+	background-color : #5FC1B4;
+	color : #163E57;
+	font-size : 35px;
+	height : 60px;
+	width : 60px;
+	line-height : 60px;
+}
+.main .btn:not([bs-btn]) {
+
+	background-color : #163E57;
+}
+.negative  {
+	background-color : #f0f0f0;
+}
+.negative h1 {
+	font-family : 'Oxygen';
+}
+.negative h2 {
+	font-family : 'Oxygen';
+	font-weight : bold;
+	color : #333333;
+}
+.negative p {
+	font-family : 'Source Sans Pro';
+	color : #6E6E6E;
+	font-size : 17px;
+}
+.negative a {
+	font-family : 'Source Sans Pro';
+	color : #6E6E6E;
+	font-size: 17px;
+	line-height: 24px;
+}
+.negative h4 {
+	font-family : 'Oxygen';
+}
+.negative h3 {
+	font-family : 'Oxygen';
+}
+.negative i.fa:not([style*=":"]) {
+	font-size : 22px;
+	height : 50px;
+	width : 50px;
+	line-height : 50px;
+	color : #5FC1B4;
+}
+.secondary  {
+	background-color : #163E57;
+}
+.secondary h1 {
+	font-family : 'Oxygen';
+	font-size : 72px;
+	color : #ffffff;
+}
+.secondary h3 {
+	font-family : 'Oxygen';
+	font-size : 20px;
+	color : #ffffff;
+}
+.secondary h4 {
+	font-family : 'Oxygen';
+	color : #ffffff;
+	font-size: 30px;
+	line-height: 33px;
+}
+.secondary p {
+	font-family : 'Source Sans Pro';
+	color : #ffffff;
+	line-height : 21px;
+}
+.secondary h2 {
+	font-family : 'Oxygen';
+	text-transform : none;
+	font-size : 35px;
+	color : #ffffff;
+}
+.secondary a {
+	font-family : 'Source Sans Pro';
+	color : #ffffff;
+}
+.secondary i.fa:not([style*=":"]) {
+	color : #5FC1B4;
+	background-color : #163E57;
+	font-size : 25px;
+	height : 45px;
+	width : 45px;
+	line-height : 45px;
+}
+.secondary .btn:not([bs-btn]) {
+	font-family : 'Oxygen';
+}
+h1 {
+	font-family : 'Oxygen';
+	font-weight: bold;
+
+}
+h2 {
+	font-family : 'Oxygen';
+	font-size : 35px;
+	text-transform : none;
+	font-weight: bold;
+
+}
+h3 {
+	font-family : 'Oxygen';
+	font-size : 20px;
+	color : #4d4d4d;
+	font-weight: normal;
+
+}
+h4 {
+	font-family : 'Oxygen';
+	font-size : 20px;
+	font-weight: bold;
+
+}
+p {
+	font-family : 'Source Sans Pro';
+	font-size : 17px;
+	color : #6e6e6e;
+}
+a {
+	font-family : 'Source Sans Pro';
+	font-size : 17px;
+	color : #163E57;
+}
+.btn:not([bs-btn]) {
+	font-family : 'Oxygen';
+	text-transform : none;
+	background-color : #5FC1B4;
+	color : #ffffff;
+}
+i.fa:not([style*=":"]) {
+	background-color : #ffffff;
+	color : #5FC1B4;
+	font-size : 35px;
+	height : 50px;
+	width : 50px;
+	line-height : 50px;
+}
+.basic h1 {
+	font-family : 'Oxygen';
+}
+.basic h2 {
+	font-family : 'Oxygen';
+	font-size : 35px;
+	text-transform : none;
+}
+.basic h3 {
+	font-family : 'Oxygen';
+	font-size : 20px;
+	color : #4d4d4d;
+}
+.basic h4 {
+	font-family : 'Oxygen';
+	font-size : 20px;
+}
+.basic p {
+	font-family : 'Source Sans Pro';
+	font-size : 17px;
+	color : #6e6e6e;
+}
+.basic a {
+	font-family : 'Source Sans Pro';
+	font-size : 17px;
+	color : #163E57;
+}
+.basic .btn:not([bs-btn]) {
+	font-family : 'Oxygen';
+	text-transform : none;
+	background-color : #5FC1B4;
+	color : #ffffff;
+}
+.basic i.fa:not([style*=":"]) {
+	background-color : #ffffff;
+	color : #5FC1B4;
+	font-size : 35px;
+	height : 50px;
+	width : 50px;
+	line-height : 50px;
+}
+.main-color {
+	color: #5FC1B4;
+}
+.main-border-color {
+	border-color: #5FC1B4;
+}
+.main-background {
+	background-color: #5FC1B4;
+}
+.negative-color {
+	color: #f0f0f0;
+}
+.negative-border-color {
+	border-color: #f0f0f0;
+}
+.negative-background {
+	background-color: #f0f0f0;
+}
+.secondary-color {
+	color: #163E57;
+}
+.secondary-border-color {
+	border-color: #163E57;
+}
+.secondary-background {
+	background-color: #163E57;
+}

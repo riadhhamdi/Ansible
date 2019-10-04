@@ -1,0 +1,10 @@
+- name: Configure Web servers 
+  hosts: all 
+  tasks: 
+  - name: Stop all the Services 
+    service: 
+      name: "{{ item }}" 
+      state: running
+    with_items:
+      - httpd
+     

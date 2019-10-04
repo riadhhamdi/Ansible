@@ -1,0 +1,32 @@
+- name: Configure Web servers 
+  hosts: all 
+  tasks: 
+  - name: Install httpd server
+    yum: 
+      name: '{{item}}' 
+      state: latest
+    loop: 
+      - firewalld
+      - httpd 
+  - name: Start required Services 
+    service: 
+      name: "{{ item }}" 
+      state: started
+      enabled: true
+    with_items:
+      - firewalld 
+      - httpd
+  - name: Configure firewalld 
+    firewalld:
+      permanent: true  
+      service: http
+      state: enabled 
+      immediate: yes 
+ 
+  - name: deploy web content per server
+    copy: 
+      src: "webcontent/content/{{item}}"
+      dest: /var/www/html
+    with_items: 
+      - index.html
+      - index_fichiers
