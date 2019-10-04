@@ -4,7 +4,7 @@
   - name: Stop all the Services 
     service: 
       name: "{{ item }}" 
-      state: running
+      state: stopped
     with_items:
       - httpd
      
