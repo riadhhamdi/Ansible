@@ -1,0 +1,95 @@
+- hosts: all 
+  vars: 
+    lv_prefix: 'lv'
+  tasks:
+
+## Checking mount point prior to porceed 
+  - name: check if the mount point is already used 
+    shell: "mount | awk '{print $3}' |grep -w ^{{mount_point}}$"
+    ignore_errors: yes
+    register: track_mount_point
+  - name: Fail if mount point already used 
+    fail:
+      msg: "already used mount point"
+    when: track_mount_point.stdout != ''
+
+## Getting disk by it's scsi location 
+  - name: Get the disk file on the system 
+    shell: "lsscsi | grep disk | grep {{location}} | awk '{print $7}'"
+    register: disk_block_file
+  - name: Show the disk file 
+    debug: 
+      var: disk_block_file.stdout_lines[0]
+  - name: Check if the VG {{vg_data}} exist
+    shell: "/usr/sbin/vgs"
+    register: vg_list 
+  ## Vgcreation using the current added disk 
+  - block:
+    - name: Check if the disk is already member of an existing VG
+      shell: "/usr/sbin/pvs {{disk_block_file.stdout_lines[0]}}"
+      register: existant_pv_check
+      ignore_errors: yes 
+    - name: Fail when the disk is already A PV 
+      fail:
+        msg: "The disk is already an existant PV"
+      when: existant_pv_check.stdout is search("vg*") or existant_pv_check.stdout is search("VG") 
+    - name: Create volume group {{vg_data}} from new added disk 
+      lvg: 
+        vg: "{{vg_data}}"
+        pvs: "{{disk_block_file.stdout_lines[0]}}"
+    when: not vg_list.stdout is search("{{vg_data}}")
+    rescue: 
+    - name: show the msg Creation is not possible disk already member if a PV 
+      debug: 
+        msg: "Creation of the VG is not possible please check your configuration"
+
+## VG extension if the VG already exist
+  - block: 
+    - name: Check if the disk is already member of an existing VG
+      shell: "/usr/sbin/pvs {{disk_block_file.stdout_lines[0]}}"
+      register: existant_pv_check
+      ignore_errors: yes 
+    - name: Fail when the disk is already A PV
+      fail:
+        msg: "The disk is already an existant PV"
+      when: existant_pv_check.stdout is search("vg*") or existant_pv_check.stdout is search("VG")
+    - name: Extend the existing {{vg_data}}
+      shell: "vgextend {{vg_data}} {{disk_block_file.stdout_lines[0]}}"
+    when: vg_list.stdout is search("{{vg_data}}") 
+    rescue:
+    - name: show the msg Creation is not possible disk already member if a PV
+      debug:
+        msg: "Extention of the VG is not possible please check your configuration"
+
+
+## Creation of a New LV 
+# 
+  - name: Get LV prefix  
+    set_fact:
+      lv_prefix: "{{lv_prefix}}_{{item[0:3]}}"
+    when: item != '' and lv_prefix | length < 14
+    with_items: "{{ mount_point.split('/') | lower }}"
+  - name: Get LV suffix 
+    shell: "printf '%03d' $(lvs {{vg_data}} | grep -v 'LV' | awk '{print $1}' | wc -l)" 
+    register: lv_suffix
+  - name: Get lvname 
+    set_fact:
+      lv_name: "{{lv_prefix}}_{{lv_suffix.stdout_lines[0]}}"
+
+  - name: Create a logical volume the size of all remaining space in the volume group
+    lvol:
+      vg: "{{vg_data}}" 
+      lv: "{{lv_name}}"
+      size: 100%FREE 
+## Format lv 
+  - name: Format created LV with {{fs}} filesystem 
+    filesystem: 
+      dev: /dev/{{vg_data}}/{{lv_name}}
+      fstype: "{{fs}}" 
+## Mount Lv 
+  - name: Mount filesystem persistently 
+    mount:
+      path: "{{mount_point}}"
+      src: /dev/{{vg_data}}/{{lv_name}}
+      state: mounted
+      fstype: "{{fs}}"
