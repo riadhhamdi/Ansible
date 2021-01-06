@@ -1,0 +1,25 @@
+- hosts: all 
+  gather_facts: yes 
+  tasks:
+  - name: just show a message 
+    debug:
+       msg: "Hello world"
+
+  - name: Show a variable content  
+    debug:
+       var: ansible_distribution
+
+
+  - name: Install a package on the remote server 
+    yum:
+      name: vsftpd
+      state: absent 
+    when: ansible_distribution == "CentOS"
+    become: true 
+
+  - name: Install a package on the remote server 
+    apt:
+      name: vsftpd
+      state: present 
+    when: ansible_distribution == "Debian"
+    become: true 
