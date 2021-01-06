@@ -1,0 +1,18 @@
+- hosts: all 
+  vars:
+    ntp_servers:
+      - ntp1.airbus.com
+      - ntp2.airbus.com
+  tasks:
+  - name: Ensure Chrony package is installed 
+    dnf:
+      name: chrony
+      state: present 
+  - name: Esnure Chrony is configured 
+    template:
+      dest: /etc/chrony.conf 
+      src: chrony.conf.j2
+  - name: Ensure Chrony is started 
+    service:
+      name: chronyd
+      state: started 
